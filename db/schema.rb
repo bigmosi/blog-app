@@ -16,6 +16,7 @@
 ActiveRecord::Schema[7.0].define(version: 20_220_727_130_516) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
+# Service to download ftp files from the server
 
   create_table 'comments', force: :cascade do |t|
     t.text 'text'
@@ -26,6 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 20_220_727_130_516) do
     t.index ['author_id'], name: 'index_comments_on_author_id'
     t.index ['post_id'], name: 'index_comments_on_post_id'
   end
+# Service to download ftp files from the server
 
   create_table 'likes', force: :cascade do |t|
     t.bigint 'author_id'
