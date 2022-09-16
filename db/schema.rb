@@ -10,9 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_220_914_185_659) do # rubocop:disable Metrics/BlockLength
+ActiveRecord::Schema[7.0].define(version: 20_220_916_072_936) do # rubocop:disable Metrics/BlockLength
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
+
+  create_table 'auctions', force: :cascade do |t|
+    t.datetime 'start_date'
+    t.datetime 'end_date'
+    t.string 'title'
+    t.text 'description'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+  end
 
   create_table 'comments', force: :cascade do |t|
     t.text 'text'
@@ -47,15 +56,12 @@ ActiveRecord::Schema[7.0].define(version: 20_220_914_185_659) do # rubocop:disab
   create_table 'users', force: :cascade do |t|
     t.string 'name'
     t.string 'photo'
-    t.text 'bio'
-    t.integer 'post_counter'
+    t.string 'bio'
+    t.integer 'posts_counter'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end
 
   add_foreign_key 'comments', 'posts'
-  add_foreign_key 'comments', 'users', column: 'author_id'
   add_foreign_key 'likes', 'posts'
-  add_foreign_key 'likes', 'users', column: 'author_id'
-  add_foreign_key 'posts', 'users', column: 'author_id'
 end
