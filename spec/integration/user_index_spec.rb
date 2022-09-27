@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 RSpec.describe 'Test Index Page', type: :feature do
   describe 'GET index' do
     before(:each) do
@@ -9,18 +10,21 @@ RSpec.describe 'Test Index Page', type: :feature do
       @third_user = User.create(name: 'Marwan', photo: 'image3.png', bio: 'bio3', posts_counter: 5)
       @third_user.save!
     end
+
     it 'shows the users username' do
       visit root_path
       expect(page).to have_content('Mohammed')
       expect(page).to have_content('Ahmed')
       expect(page).to have_content('Marwan')
     end
+
     it 'shows the users profile picture' do
       visit root_path
       expect(page).to have_css('img[src*="image1.png"]')
       expect(page).to have_css('img[src*="image2.png"]')
       expect(page).to have_css('img[src*="image3.png"]')
     end
+
     it 'shows the number of posts of each user' do
       visit root_path
       expect(page).to have_content('1')

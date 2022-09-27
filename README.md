@@ -1,6 +1,6 @@
 # Blog App
 
-I am going to build the Blog app for three weeks. Here is the list of projects that will guide me through the steps described above. 
+I am going to build the Blog app for three weeks. Here is the list of projects that will guide me through the steps described above.
 
 Project 1: Creating a data model.
 Project 2: Validations and Model specs.
@@ -50,6 +50,12 @@ open terminal
 run the command $irb (interactive ruby shell)
 run the program functions
 
+### Testing
+
+This command will run all the tests in your terminal:
+
+rspec spec
+
 
 ## Authors
 
@@ -72,7 +78,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Microverse 
+- Microverse
 
 ## 📝 License
 
