@@ -14,6 +14,8 @@ gem 'net-http'
 
 gem 'devise'
 
+gem 'cancancan'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
