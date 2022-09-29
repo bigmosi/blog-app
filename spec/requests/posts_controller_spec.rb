@@ -1,31 +1,31 @@
 require 'rails_helper'
-
-RSpec.describe 'PostsController', type: :request do
-  describe 'GET /index' do
-    context 'when the page is loaded' do
-      it 'returns a 200 status code and render template for index' do
-        get '/users/1/posts'
-        expect(response).to have_http_status(200)
-        expect(response).to render_template(:index)
-      end
-      it 'includes pagination' do
-        get '/users/1/posts'
-        expect(response.body).to include('Pagination')
-      end
-    end
+RSpec.describe 'Posts', type: :request do
+  let!(:user) { User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.') }
+  let!(:post) do
+    Post.create(author: user, title: 'Hello', text: 'This is my first post')
   end
 
-  describe 'GET /show' do
-    context 'when the page is loaded' do
-      it 'returns a 200 status code and render template for show' do
-        get '/users/1/posts', params: { id: 1 }
-        expect(response).to have_http_status(200)
-        expect(response).to render_template(:index)
-      end
-      it 'returns a 200 status code and render template for show' do
-        get '/users/1/posts', params: { id: 1 }
-        expect(response.body).to include('post')
-      end
+  context 'when GET /index' do
+    before { @posts = post }
+    before(:example) { get user_posts_path(user.id) }
+
+    it 'should have success code of ok' do
+      expect(response).to have_http_status(:ok)
+    end
+
+    it "should render the 'index' template" do
+      expect(response).to render_template(:index)
+    end
+  end
+  context 'when GET /show' do
+    before(:example) { get user_post_path(user, post) }
+
+    it 'should have success code of ok' do
+      expect(response).to have_http_status(:ok)
+    end
+
+    it "should render the 'show' template" do
+      expect(response).to render_template(:show)
     end
   end
 end

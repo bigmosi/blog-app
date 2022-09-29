@@ -1,65 +1,44 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  before(:all) do
-    @user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.',
-                        posts_counter: 0)
-
-    @post = Post.new(title: 'Post Title', text: 'Post text', likes_counter: 2, comments_counter: 3, author: @user)
+  subject do
+    user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.',
+                       posts_counter: 0)
+    Post.create(title: 'Hello', text: 'This is my first post', comments_counter: 0, likes_counter: 0, author: user)
+    Post.create(title: 'Hello2', text: 'This is my second post', comments_counter: 0, likes_counter: 0, author: user)
+    Post.new(title: 'Hello3', text: 'This is my third post', comments_counter: 0, likes_counter: 0, author: user)
   end
 
-  it 'title should be present and not empty' do
-    @post.title = nil
-    expect(@post).not_to be_valid
-
-    @post.title = ''
-    expect(@post).to_not be_valid
-  end
+  before { subject.save }
 
   it 'title should be present' do
-    @post.title = 'Post Title'
-    expect(@post).to be_valid
+    subject.title = nil
+    expect(subject).to_not be_valid
   end
 
-  it 'should return comments_counter greater than or equal to 0' do
-    @post.comments_counter = -15
-    expect(@post).not_to be_valid
-
-    @post.comments_counter = 2
-    expect(@post).to be_valid
-
-    @post.comments_counter = 4
-    expect(@post).to be_valid
+  it 'comment counter should be greater or equal to 0' do
+    subject.comments_counter = -1
+    expect(subject).to_not be_valid
   end
 
-  it 'should return likes_counter greater than or equal to 0' do
-    @post.likes_counter = -13
-    expect(@post).to_not be_valid
-
-    @post.likes_counter = 0
-    expect(@post).to be_valid
-
-    @post.likes_counter = 19
-    expect(@post).to be_valid
+  it 'likes counter should be greater or equal to 0' do
+    subject.likes_counter = -1
+    expect(subject).to_not be_valid
   end
 
-  it 'should have likes_counter numericaly' do
-    @post.likes_counter = 'one'
-    expect(@post).to_not be_valid
-
-    @post.likes_counter = 20
-    expect(@post).to be_valid
+  it 'should update posts counter' do
+    expect(subject.author.posts_counter).to eq 3
   end
 
-  it 'should have title max length 250' do
-    @post.title = 'a' * 251
-    expect(@post).to_not be_valid
-
-    @post.title = 'b' * 250
-    expect(@post).to be_valid
-  end
-
-  it 'comment_counters should return less than 5 comments' do
-    expect(@post.comments_counter).to be < 5
+  it 'should get last 5 comment' do
+    Comment.create(post: subject, author: subject.author, text: 'Hi John!')
+    Comment.create(post: subject, author: subject.author, text: 'Hi John!2')
+    Comment.create(post: subject, author: subject.author, text: 'Hi John!3')
+    Comment.create(post: subject, author: subject.author, text: 'Hi John!4')
+    Comment.create(post: subject, author: subject.author, text: 'Hi John!5')
+    Comment.create(post: subject, author: subject.author, text: 'Hi John!6')
+    Comment.create(post: subject, author: subject.author, text: 'Hi John!7')
+    expect(subject.last_five_comments.length).to eq 5
+    expect(subject.last_five_comments[0].text).to eq 'Hi John!7'
   end
 end
