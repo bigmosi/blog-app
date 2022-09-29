@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <% if @users.count > 0 %>
   <% @users.each do |user| %>
     <%= render partial: "shared/user/user_header", locals: { user: user } %>
@@ -5,3 +6,17 @@
 <% else %>
   <p>No users found</p>
 <% end %>
+=======
+<section class="container">  
+    <% @users.each do |user| %>       
+        <div class="user-box m-3">            
+            <img class="image-user" src=<%= user.photo %> alt="user">
+            <div class="user-info p-5">
+                <p class="user-name"><%= link_to user.name, user %></p>
+                <p class="user-post">Number of posts: <%= user.posts_counter%></p> 
+            </div>
+        </div>
+    <% end %>   
+    
+</section>
+>>>>>>> dev

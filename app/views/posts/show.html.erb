@@ -5,6 +5,7 @@
       <p>Comments: <span><%= @post.comments.count %></span></p>
       <p>Likes: <span><%= @post.likes.count %></span></p>
     </div>
+<<<<<<< HEAD
   </div>
   <p><%= @post.text %></p>
   <%= render partial: "shared/comment/new_comment"%>
@@ -15,3 +16,30 @@
   <% end %>
 </div>
 <%= button_to 'Like', user_post_likes_path(@post.author, @post), method: :post, class: 'all_posts'%>
+=======
+    <div class="comment-info">
+        <% @post.recent_comments.each do |comment| %>
+            <div>
+                <p> 
+                    <span>
+                        <%= comment.author.name %>:
+                    </span> 
+                    <span>
+                        <%= comment.text %>
+                    </span>
+                </p>
+            </div>            
+        <% end %>
+    </div>
+    <div class="button-user">
+        <%= button_to "Back", user_path(@post.author, @post), method: :get, class: "button" %>
+        <%= button_to "Add Comment", new_user_post_comment_path(@post.author, @post), method: :get, class: "button" %>
+        <div >
+            <%= form_with model: @like,  url: "/users/#{params['user_id']}/posts/#{params['id']}/likes", method: :post , local: true do |form|%>
+                <%= form.submit "Like", class: 'button' %>
+            <% end %>
+        </div>
+    </div>
+</section>
+
+>>>>>>> dev

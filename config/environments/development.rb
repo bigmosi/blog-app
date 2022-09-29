@@ -14,6 +14,12 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  config.action_mailer.raise_delivery_errors = false
+
+  config.action_mailer.perform_caching = false
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
   # Enable server timing
   config.server_timing = true
 
