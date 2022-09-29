@@ -1,9 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
-
   def index
-    @user = current_user
-    @posts = @user.posts.includes(:comments)
+    @posts = Post.includes(:author, :comments).where(author: params[:user_id])
   end
 
   def show
@@ -12,29 +9,23 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @user = current_user
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.author_id = current_user.id
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to user_post_url(current_user, @post), notice: 'Post was successfully created.' }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    @user = Current.user
+    @post = Post.create(post_params)
+    @post.author = @user
+    if @post.save
+      flash[:notice] = 'New post created successfully.'
+      redirect_to user_post_path(@user, @post)
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   private
 
-  def set_post
-    @post = Post.find(params[:id])
-  end
-
   def post_params
-    params.require(:post).permit(:title, :text, :comments_counter, :likes_counter)
+    params.require(:post).permit(:title, :text)
   end
 end

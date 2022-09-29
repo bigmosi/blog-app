@@ -5,56 +5,18 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
 
-mohammed = User.create!(
-  name: 'mohammed',
-  photo: 'https://dummyimage.com/600x400/000/fff',
-  bio: 'Lorem ipsum dolor sit amet,
-    consectetur adipiscing elit. Pellentesque nulla nunc,
-    lacinia sed volutpat ut, tristique et tortor.
-    Proin a nulla lorem. Duis ac nunc lectus. Ut non felis id elit tempor gravida.
-    Aenean varius sem vel tellus elementum,
-    in eleifend mauris eleifend. Donec at tempor libero,
-    et maximus magna. Nulla vehicula convallis nulla.
-    Duis arcu turpis, egestas ultrices est at, scelerisque lobortis est.',
-  posts_counter: 0)
+# Users
+first_user = User.create(name: 'Tom', photo: 'https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80', bio: 'Teacher from Mexico.', posts_counter: 0)
+second_user = User.create(name: 'Lilly', photo: 'https://images.unsplash.com/photo-1506863530036-1efeddceb993?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=744&q=80', bio: 'Teacher from Poland.', posts_counter: 0)
+third_user = User.create(name: 'Tim', photo: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80', bio: 'Teacher from Canada.', posts_counter: 0)
 
-tom = User.create!(
-  name: 'tom',
-  photo: 'https://dummyimage.com/600x400/000/fff',
-  bio: 'Lorem ipsum dolor sit amet,
-    consectetur adipiscing elit. Pellentesque nulla nunc,
-    lacinia sed volutpat ut, tristique et tortor.
-    Proin a nulla lorem. Duis ac nunc lectus. Ut non felis id elit tempor gravida.
-    Aenean varius sem vel tellus elementum,
-    in eleifend mauris eleifend. Donec at tempor libero,
-    et maximus magna. Nulla vehicula convallis nulla.
-    Duis arcu turpis, egestas ultrices est at, scelerisque lobortis est.',
-  posts_counter: 0)
+# Posts
+first_post = Post.create(author: first_user, title: 'Hello', text: 'This is my first post', comments_counter: 0, likes_counter: 0)
+second_post = Post.create(author: first_user, title: 'Hello again', text: 'This is my second post', comments_counter: 0, likes_counter: 0)
+third_post = Post.create(author: first_user, title: 'Hello again and again', text: 'This is my third post', comments_counter: 0, likes_counter: 0)
+fourth_post = Post.create(author: first_user, title: 'Hello', text: 'This is my fourth post', comments_counter: 0, likes_counter: 0)
 
-post1 = mohammed.posts.create!(title: 'Ruby and Rails 1', text: 'this is first post about Ruby and Rails! 1', comments_counter: 0, likes_counter: 0)
-post2 = mohammed.posts.create!(title: 'Ruby and Rails 2', text: 'this is first post about Ruby and Rails! 2', comments_counter: 0, likes_counter: 0)
-post3 = mohammed.posts.create!(title: 'Ruby and Rails 3', text: 'this is first post about Ruby and Rails! 3', comments_counter: 0, likes_counter: 0)
-post4 = mohammed.posts.create!(title: 'Ruby and Rails 4', text: 'this is first post about Ruby and Rails! 4', comments_counter: 0, likes_counter: 0)
-post5 = mohammed.posts.create!(title: 'Ruby and Rails 5', text: 'this is first post about Ruby and Rails! 5', comments_counter: 0, likes_counter: 0)
-post6 = tom.posts.create!(title: 'Never ending fun', text: 'this is second post but I don\'t think I should create another post again', comments_counter: 0, likes_counter: 0)
-post7 = tom.posts.create!(title: 'The end of the world', text: 'it all around the corner', comments_counter: 0, likes_counter: 0)
-
-mohammed.comments.create!(text: 'really nice post Michael', post: post1)
-mohammed.comments.create!(text: 'Absolutely amazing 1', post: post1)
-mohammed.comments.create!(text: 'Absolutely amazing 2', post: post1)
-mohammed.comments.create!(text: 'Absolutely amazing 3', post: post1)
-mohammed.comments.create!(text: 'Absolutely amazing 4', post: post1)
-mohammed.comments.create!(text: 'Absolutely amazing 5', post: post1)
-tom.comments.create!(text: 'Well Done 👏👏👏', post: post1)
-tom.comments.create!(text: 'Love 💓 it!!!', post: post1)
-tom.comments.create!(text: 'I am with you to the bone man!', post: post1)
-
-
+fifth_post = Post.create(author: second_user, title: 'Hello', text: 'This is my first post', comments_counter: 0, likes_counter: 0)
+sixth_post = Post.create(author: second_user, title: 'Hello again', text: 'This is my second post', comments_counter: 0, likes_counter: 0)
+seventh_post = Post.create(author: second_user, title: 'Hello again and again', text: 'This is my third post', comments_counter: 0, likes_counter: 0)
