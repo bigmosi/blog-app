@@ -1,0 +1,45 @@
+current directory: /home/amos/Microverse-2/blog-app/vendor/bundle/ruby/2.7.0/gems/couchbase-1.2.0.z.beta5/ext/couchbase_ext
+/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20220930-33404-1mvntf7.rb extconf.rb
+checking for lcb_verify_compiler_setup() in -lcouchbase... no
+
+**********************************************************************
+You must install libcouchbase >= 2.0.0beta3. See http://www.couchbase.com/develop/ for more details
+**********************************************************************
+
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/usr/bin/$(RUBY_BASE_NAME)2.7
+	--with-libcouchbase-dir
+	--without-libcouchbase-dir
+	--with-libcouchbase-include
+	--without-libcouchbase-include=${libcouchbase-dir}/include
+	--with-libcouchbase-lib
+	--without-libcouchbase-lib=${libcouchbase-dir}/lib
+	--with-couchbase-dir
+	--without-couchbase-dir
+	--with-couchbase-include
+	--without-couchbase-include=${couchbase-dir}/include
+	--with-couchbase-lib
+	--without-couchbase-lib=${couchbase-dir}/lib
+	--with-couchbaselib
+	--without-couchbaselib
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /home/amos/Microverse-2/blog-app/vendor/bundle/ruby/2.7.0/extensions/x86_64-linux/2.7.0/couchbase-1.2.0.z.beta5/mkmf.log
+
+extconf failed, exit code 1

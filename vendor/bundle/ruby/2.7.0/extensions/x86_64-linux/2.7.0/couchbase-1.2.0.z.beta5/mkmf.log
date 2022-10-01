@@ -1,0 +1,86 @@
+"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.7.0 -I/usr/include/ruby-2.7.0/ruby/backward -I/usr/include/ruby-2.7.0 -I. -I/usr/local/include -I/usr/include -I/usr/include -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.7-fvook9/ruby2.7-2.7.0=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC  -std=c99 -Wall -Wextra  conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -L/usr/lib -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic      -lruby-2.7  -lm   -lc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+"gcc -I/usr/include/x86_64-linux-gnu/ruby-2.7.0 -I/usr/include/ruby-2.7.0/ruby/backward -I/usr/include/ruby-2.7.0 -I. -I/usr/local/include -I/usr/include -I/usr/include -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.7-fvook9/ruby2.7-2.7.0=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC  -std=c99 -Wall -Wextra    -c conftest.c"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3:   #include <stdarg.h>
+ 4:   int foo(int x, ...) {
+ 5:     va_list va;
+ 6:     va_start(va, x);
+ 7:     va_arg(va, int);
+ 8:     va_arg(va, char *);
+ 9:     va_arg(va, double);
+10:     return 0;
+11:   }
+12:   int main() {
+13:     return foo(10, "", 3.14);
+14:     return 0;
+15:   }
+/* end */
+
+have_library: checking for lcb_verify_compiler_setup() in -lcouchbase... -------------------- no
+
+"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.7.0 -I/usr/include/ruby-2.7.0/ruby/backward -I/usr/include/ruby-2.7.0 -I. -I/usr/local/include -I/usr/include -I/usr/include -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.7-fvook9/ruby2.7-2.7.0=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC  -std=c99 -Wall -Wextra  conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -L/usr/lib -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic      -lruby-2.7 -lcouchbase  -lm   -lc "
+conftest.c:3:10: fatal error: libcouchbase/couchbase.h: No such file or directory
+    3 | #include <libcouchbase/couchbase.h>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <libcouchbase/couchbase.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: int t(void) { void ((*volatile p)()); p = (void ((*)()))lcb_verify_compiler_setup; return !p; }
+/* end */
+
+"gcc -o conftest -I/usr/include/x86_64-linux-gnu/ruby-2.7.0 -I/usr/include/ruby-2.7.0/ruby/backward -I/usr/include/ruby-2.7.0 -I. -I/usr/local/include -I/usr/include -I/usr/include -Wdate-time -D_FORTIFY_SOURCE=2   -g -O2 -fdebug-prefix-map=/build/ruby2.7-fvook9/ruby2.7-2.7.0=. -fstack-protector-strong -Wformat -Werror=format-security -fPIC  -std=c99 -Wall -Wextra  conftest.c  -L. -L/usr/lib/x86_64-linux-gnu -L/usr/local/lib -L/usr/lib -L. -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -fstack-protector-strong -rdynamic -Wl,-export-dynamic      -lruby-2.7 -lcouchbase  -lm   -lc "
+conftest.c:3:10: fatal error: libcouchbase/couchbase.h: No such file or directory
+    3 | #include <libcouchbase/couchbase.h>
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <libcouchbase/couchbase.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     int (* volatile tp)(void)=(int (*)(void))&t;
+11:     printf("%d", (*tp)());
+12:   }
+13: 
+14:   return !!argv[argc];
+15: }
+16: extern void lcb_verify_compiler_setup();
+17: int t(void) { lcb_verify_compiler_setup(); return 0; }
+/* end */
+
+--------------------
+

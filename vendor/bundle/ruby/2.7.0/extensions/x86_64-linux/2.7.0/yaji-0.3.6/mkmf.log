@@ -1,0 +1,8 @@
+yaji_config.h is:
+/* begin */
+1: #ifndef YAJI_CONFIG_H
+2: #define YAJI_CONFIG_H
+3: #define  READ_BUFSIZE 8192
+4: #endif
+/* end */
+

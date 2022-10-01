@@ -1,0 +1,15 @@
+*.bundle
+*.gem
+*.so
+.timestamp
+.yardoc
+Gemfile.lock
+core*
+doc/
+ext/couchbase/Makefile
+ext/couchbase/mkmf.log
+lib/couchbase_ext.rb
+pkg/*
+ports
+test/CouchbaseMock.jar
+tmp

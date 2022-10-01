@@ -1,0 +1,13 @@
+current directory: /home/amos/Microverse-2/blog-app/vendor/bundle/ruby/2.7.0/gems/json-2.6.2/ext/json
+/usr/bin/ruby2.7 -I /usr/lib/ruby/2.7.0 -r ./siteconf20220930-21624-pe6vy1.rb extconf.rb
+creating Makefile
+
+current directory: /home/amos/Microverse-2/blog-app/vendor/bundle/ruby/2.7.0/gems/json-2.6.2/ext/json
+make "DESTDIR=" clean
+
+current directory: /home/amos/Microverse-2/blog-app/vendor/bundle/ruby/2.7.0/gems/json-2.6.2/ext/json
+make "DESTDIR="
+make: Nothing to be done for 'all'.
+
+current directory: /home/amos/Microverse-2/blog-app/vendor/bundle/ruby/2.7.0/gems/json-2.6.2/ext/json
+make "DESTDIR=" install
