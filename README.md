@@ -40,7 +40,7 @@ To get a local copy up and running follow these simple example steps.
 
 - Clone the project
 
-git clone https://github.com/bigmosi/blog-app.git
+git clone https://github.com/bigmisi/blog-app.git
 
 cd blog-app
 
@@ -55,9 +55,9 @@ run the program functions
 
 👤 **Kinyera Amos**
 
-- GitHub: [@kinyera-amos](https://github.com/bigmosi)
-- Twitter: [@kinyera_amos](https://twitter.com/kinyera_amos)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/kinyera_amos)
+- GitHub: [@amos](https://github.com/bigmosi)
+- Twitter: [@amos](https://twitter.com/kinyera_amos)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/kinyera-amos)
 
 
 ## 🤝 Contributing
